@@ -1,2 +1,2 @@
-# Collection
-React-based frontend project
+# CollectionServer
+Node.js backend project
