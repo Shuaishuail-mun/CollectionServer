@@ -4,6 +4,13 @@ var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const config = require('./config');
+
+require('mongoose').connect(
+    `mongodb://${config.mongoDB.host}:${config.mongoDB.port}/${config.mongoDB.database}`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
