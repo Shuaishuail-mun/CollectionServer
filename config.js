@@ -6,6 +6,8 @@ module.exports = {
         database: 'collection'
     },
 
+    'secret': 'supersecret',
+
     recaptcha: {
         siteKey: '6LfwMsEUAAAAAIXDkEiLfRXcbrUZEY2w-XX0oF_V',
         secretKey: '6LfwMsEUAAAAAHogaYXz11f0iGsul0S4KONBfHuc'

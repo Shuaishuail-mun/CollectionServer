@@ -4,24 +4,25 @@ let User;
 
 let userSchema = new mongoose.Schema({
     username: {
-        type: String,
+        type: mongoose.SchemaTypes.String,
         required: true,
         unique: true
     },
     password: {
-        type: String,
+        type: mongoose.SchemaTypes.String,
         required: true
+    },
+    headImg: {
+        type: mongoose.SchemaTypes.String
     }
 });
 
-userSchema.statics.register = async function (username, password) {
-
-    let user = new User({
-        username: username,
-        password: password
-    });
-
-    return user.save();
-};
+// userSchema.statics.find = async function (username, password) {
+//     let user = await User.findOne({
+//         username: username,
+//     });
+//
+//     return user;
+// };
 
 module.exports = User = mongoose.model('User', userSchema);
