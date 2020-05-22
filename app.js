@@ -12,7 +12,6 @@ require('mongoose').connect(
       useUnifiedTopology: true
     });
 
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var movieRouter = require('./routes/movie');
 var articleRouter = require('./routes/articles');
@@ -21,6 +20,11 @@ var favoredRouter = require('./routes/favored');
 
 var app = express();
 app.use(cors({credentials: true, origin: "http://localhost:3006"}));
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/movie', movieRouter);
 app.use('/articles', articleRouter);

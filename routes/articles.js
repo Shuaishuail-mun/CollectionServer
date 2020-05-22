@@ -57,7 +57,7 @@ router.get('/getRecent', async function(req, res, next) {
         articles = await Article.populate(articles, {
             path: "userId"
         });*/
-        let articles = await Article.find().populate({ path: 'userId', select: 'username headImg' });
+        let articles = await Article.find().sort({date:-1}).populate({ path: 'userId', select: 'username headImg' });
         if (articles) {
             res.json({query: true, articles: articles});
             res.end();
